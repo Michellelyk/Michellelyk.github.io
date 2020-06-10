@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}   
+
+@font-face {
+    font-family: "Explore";
+    src: url("./fonts/Explore.svg") format("svg"), 
+      url("./fonts/Explore.ttf") format("truetype"), 
+      url("./fonts/Explore.woff") format("woff"); 
+ }
+ 
+body {
+    background: linear-gradient(white, lightgoldenrodyellow);   
+    height: 100vh;
+    font-family: "Lato", sans-serif;
+    font-size: 14pt;
+        
+}
+ 
+
+header {
+    background: purple;
+    color: white;
+    font-family: Explore, serif;
+    text-align: center;
+    width: 100%;
+}
+ 
+main {
+    background: radial-gradient(white, #F7D66A);
+    width: 100%;
+}
+  
+nav {
+    background: green;
+    color: yellow;
+    width: calc(0.5 * (100% - var(--grid-width)));
+}
+
+.grid-box{
+    background: #f4b3ab;
+    border: 5px solid #5e4a5c;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 640px;
+    margin: auto;
+    padding: 5px;
+    perspective: 1000px; /*gives depth*/
+    width: 640px;
+    justify-content: center;
+}
+
+.card{
+    
+    height:calc(33.3% - 4px);
+    position: relative;
+    width:calc(25% - 4px);
+    margin: 2px;
+    transform-style: preserve-3d; /*inserts our card into the 3D space*/
+    transition: transform 0.3s;
+}
+
+.front-face,
+.back-face{
+
+    border:2px solid white;
+    border-radius: 5px;
+    height: 100%;
+    width:100%;
+    position: absolute;
+    backface-visibility: hidden; 
+    /*when we flip, instead of seeing country flag images, we see inverted cover.
+    this is bc all html elements have a backface (a mirrored image of itself).*/
+}
+
+.card:hover
+{
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+.card.flip{
+    transform: rotateY(180deg);
+}
+
+.front-face{
+    transform: rotateY(180deg);
+}
+
+footer{
+    background: lightgoldenrodyellow;
+    color: white;
+    padding: 5px;
+    text-align: right;
+}
